@@ -1,4 +1,4 @@
-package cn.caohongliang.amqp.rabbit.core;
+package cn.caohongliang.amqp.rabbit.core.constants;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

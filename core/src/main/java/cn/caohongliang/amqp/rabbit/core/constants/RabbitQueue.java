@@ -1,4 +1,4 @@
-package cn.caohongliang.amqp.rabbit.core;
+package cn.caohongliang.amqp.rabbit.core.constants;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,7 +30,37 @@ public enum RabbitQueue {
 	 */
 	private String suffixQueueName;
 
+	/**
+	 * 获取队列名称
+	 * @return 队列名
+	 */
 	public String getQueueName() {
 		return this.consumerSystem.name() + "_" + this.suffixQueueName;
+	}
+
+	/**
+	 * 获取队列名称（顺序消费）
+	 * @param index 队列角标
+	 * @return 队列名
+	 */
+	public String getQueueName(int index) {
+		return getQueueName() + "-" + index;
+	}
+
+	/**
+	 * 获取RoutingKey
+	 * @return routing_key
+	 */
+	public String getRoutingKey() {
+		return this.getQueueName();
+	}
+
+	/**
+	 * 获取RoutingKey（顺序消费）
+	 * @param index 队列角标
+	 * @return routing_key
+	 */
+	public String getRoutingKey(int index) {
+		return this.getQueueName();
 	}
 }

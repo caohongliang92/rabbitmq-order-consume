@@ -4,3 +4,5 @@ spring:
     virtual-host: /dev
     username: root
     password: root
+server:
+  port: 0

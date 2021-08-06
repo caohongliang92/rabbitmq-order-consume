@@ -1,4 +1,4 @@
-package cn.caohongliang.amqp.rabbit.core;
+package cn.caohongliang.amqp.rabbit.core.constants;
 
 /**
  * 消费者的所属系统

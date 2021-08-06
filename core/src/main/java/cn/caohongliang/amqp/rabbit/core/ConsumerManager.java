@@ -1,9 +1,9 @@
 package cn.caohongliang.amqp.rabbit.core;
 
+import cn.caohongliang.amqp.rabbit.core.consumer.BaseConsumer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.InitializingBean;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,29 +12,16 @@ import java.util.List;
 @Slf4j
 public class ConsumerManager implements InitializingBean {
 	/**
-	 * 顺序消费者
+	 * 消费者
 	 */
-	private List<BaseOrderlyConsumer<?>> orderlyConsumers;
-	/**
-	 * 其他消费者
-	 */
-	private List<BaseConsumer<?>> otherConsumers;
+	private List<BaseConsumer<?>> consumers;
 
 	public ConsumerManager(List<BaseConsumer<?>> consumers) {
-		orderlyConsumers = new ArrayList<>();
-		otherConsumers = new ArrayList<>();
-		consumers.forEach(consumer -> {
-			if (consumer instanceof BaseOrderlyConsumer) {
-				orderlyConsumers.add((BaseOrderlyConsumer<?>) consumer);
-			} else {
-				otherConsumers.add(consumer);
-			}
-		});
+		this.consumers = consumers;
 	}
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		otherConsumers.forEach(BaseConsumer::start);
-		orderlyConsumers.forEach(BaseConsumer::start);
+		consumers.forEach(BaseConsumer::start);
 	}
 }

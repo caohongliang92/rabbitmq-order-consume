@@ -1,6 +1,9 @@
 package cn.caohongliang.amqp.rabbit.order.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
@@ -10,6 +13,9 @@ import java.io.Serializable;
  * @author caohongliang
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class OrderStatusChangeDTO implements Serializable {
 	/**
 	 * 订单ID
